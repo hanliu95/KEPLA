@@ -12,8 +12,10 @@
 
 ## Introduction
 This repository contains the PyTorch implementation of **KEPLA** framework. KEPLA is an end-to-end knowledge-enhanced deep learning framework for protein-ligand binding affinity (PLA) prediction, designed to address the performance bottlenecks and limited interpretability of existing methods.  It works on target protein sequences and ligand molecular graphs to perform prediction.
+<!-- 
 ## Framework
 ![DrugBAN](image/DrugBAN.jpg)
+-->
 ## System Requirements
 The source code developed in Python 3.8 using PyTorch 1.7.1. The required python dependencies are given below. KEPLA is supported for any standard computer and operating system (Windows/macOS/Linux) with enough RAM to run. There is no additional non-standard hardware requirements.
 
