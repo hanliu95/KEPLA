@@ -11,8 +11,7 @@
 -->
 
 ## Introduction
-This repository contains the PyTorch implementation of **KEPLA** framework, as described in our *Nature Machine Intelligence* paper "[Interpretable bilinear attention network with domain adaptation improves drug–target prediction](https://doi.org/10.1038/s42256-022-00605-1)".  **DrugBAN** is a deep bilinear attention network (BAN) framework with adversarial domain adaptation to explicitly learn pair-wise local interactions between drugs and targets,
-and adapt on out-of-distribution data. It works on two-dimensional (2D) drug molecular graphs and target protein sequences to perform prediction.
+This repository contains the PyTorch implementation of **KEPLA** framework. KEPLA is an end-to-end knowledge-enhanced deep learning framework for protein-ligand binding affinity (PLA) prediction, designed to address the performance bottlenecks and limited interpretability of existing methods.  It works on target protein sequences and ligand molecular graphs to perform prediction.
 ## Framework
 ![DrugBAN](image/DrugBAN.jpg)
 ## System Requirements
