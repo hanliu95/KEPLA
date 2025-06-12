@@ -54,9 +54,9 @@ $ cd KEPLA
 
 
 ## Datasets
-The PDBbind dataset can be downloaded [here](http://pdbbind-cn.org).
+The PDBbind dataset [1] can be downloaded [here](http://pdbbind-cn.org).
 
-The CSAR-HiQ dataset can be downloaded [here](http://www.csardock.org).
+The CSAR-HiQ dataset [2] can be downloaded [here](http://www.csardock.org).
 
 You may need to use the [UCSF Chimera tool](https://www.cgl.ucsf.edu/chimera/) to convert the PDB-format files into MOL2-format files for feature extraction at first.
 
@@ -86,11 +86,9 @@ $ python main.py --cfg "configs/KEPLA.yaml" --data ${dataset} --split "cold"
 ```
 
 ## Acknowledgements
-This implementation is inspired and partially based on earlier works [2], [4] and [5].
+This implementation is inspired and partially based on earlier work [3].
 
 ## References
-    [1] Liu, Tiqing, Yuhmei Lin, Xin Wen, Robert N. Jorissen, and Michael K. Gilson (2007). BindingDB: a web-accessible database of experimentally determined protein–ligand binding affinities. Nucleic acids research, 35(suppl_1), D198-D201.
-    [2] Huang, Kexin, Cao Xiao, Lucas M. Glass, and Jimeng Sun (2021). MolTrans: Molecular Interaction Transformer for drug–target interaction prediction. Bioinformatics, 37(6), 830-836.
-    [3] Chen, Lifan, et al (2020). TransformerCPI: improving compound–protein interaction prediction by sequence-based deep learning with self-attention mechanism and label reversal experiments. Bioinformatics, 36(16), 4406-4414.
-    [4] Kim, Jin-Hwa, Jaehyun Jun, and Byoung-Tak Zhang (2018). Bilinear attention networks. Advances in neural information processing systems, 31.
-    [5] Haiping Lu, Xianyuan Liu, Shuo Zhou, Robert Turner, Peizhen Bai, ... & Hao Xu (2022). PyKale: Knowledge-Aware Machine Learning from Multiple Sources in Python. In Proceedings of the 31st ACM International Conference on Information and Knowledge Management (CIKM).
+    [1] Liu, Zhihai, et al. "PDB-wide collection of binding data: current status of the PDBbind database." Bioinformatics 31.3 (2015): 405-412.
+    [2] Smith, Richard D., et al. "CSAR benchmark exercise of 2010: combined evaluation across all submitted scoring functions." Journal of Chemical Information and Modeling 51.9 (2011): 2115-2131.
+    [3] Bai, Peizhen, et al. "Interpretable bilinear attention network with domain adaptation improves drug–target prediction." Nature Machine Intelligence 5.2 (2023): 126-136.
