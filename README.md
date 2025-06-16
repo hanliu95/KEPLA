@@ -29,7 +29,6 @@ pandas>=1.2.4
 prettytable>=2.2.1
 rdkit~=2021.03.2
 yacs~=0.1.8
-comet-ml~=3.23.1 # optional
 ```
 ## Installation Guide
 Clone this Github repo and set up a new conda environment. It normally takes about 10 minutes to install on a normal desktop computer.
@@ -48,7 +47,7 @@ $ pip install yacs
 $ pip install prettytable
 
 # clone the source code of KEPLA
-$ git clone https://github.com/pz-white/KEPLA.git
+$ git clone https://github.com/hanliu95/KEPLA.git
 $ cd KEPLA
 ```
 
