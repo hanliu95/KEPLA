@@ -4,7 +4,7 @@
 
 <div align="left">
 
-[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/hanliu95/KEPLA/blob/main/LICENSE.md)
+[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/hanliu95/KEPLA/LICENSE.md)
 </div>
 
 ## Introduction
