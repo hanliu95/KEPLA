@@ -1,14 +1,11 @@
 # KEPLA
 # KEPLA: A Knowledge-Enhanced Deep Learning Framework for Accurate Protein-Ligand Binding Affinity Prediction
 
-<!-- 
+
 <div align="left">
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pz-white/DrugBAN/blob/main/drugban_demo.ipynb)
-[![DOI:10.1038/s42256-022-00605-1](https://zenodo.org/badge/DOI/10.1038/s42256-022-00605-1.svg)](https://doi.org/10.1038/s42256-022-00605-1)
-[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/peizhenbai/DrugBAN/blob/main/LICENSE.md)
+[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/hanliu95/KEPLA/blob/main/LICENSE.md)
 </div>
--->
 
 ## Introduction
 This repository contains the PyTorch implementation of **KEPLA** framework. KEPLA is an end-to-end knowledge-enhanced deep learning framework for protein-ligand binding affinity (PLA) prediction, designed to address the performance bottlenecks and limited interpretability of existing methods.  It works on target protein sequences and ligand molecular graphs to perform prediction.
