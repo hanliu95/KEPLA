@@ -1,5 +1,5 @@
 # KEPLA
-# KEPLA: A Knowledge-Enhanced Deep Learning Framework for Accurate Protein-Ligand Binding Affinity Prediction
+# KEPLA: A Knowledge-Enhanced Deep Learning Framework for Accurate Protein-Ligand Binding Affinity Prediction | [Paper](https://arxiv.org/abs/2506.13196)
 
 
 <div align="left">
