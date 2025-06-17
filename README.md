@@ -56,10 +56,6 @@ You may need to use the [UCSF Chimera tool](https://www.cgl.ucsf.edu/chimera/) t
 
 Alternatively, we also provided a [dropbox link](https://www.dropbox.com/sh/2uih3c6fq37qfli/AAD-LHXSWMLAuGWzcQLk5WI3a) for downloading PDBbind and CSAR-HiQ datasets.
 
-The downloaded dataset should be preprocessed to obtain features and spatial coordinates:
-```
-python preprocess_pdbbind.py --data_path_core YOUR_DATASET_PATH --data_path_refined YOUR_DATASET_PATH --dataset_name pdbbind2016 --output_path YOUR_OUTPUT_PATH --cutoff 5
-```
 
 ## Run KEPLA on Our Data to Reproduce Results
 
@@ -67,7 +63,7 @@ To train KEPLA, where we provide the basic configurations for all hyperparameter
 
 For the in-domain experiments with KEPLA, you can directly run the following command. `${dataset}` could either be `pdbbind` or `csar`.
 ```
-$ python main.py --cfg "configs/KEPLA.yaml" --data ${dataset} --split "cluster"
+$ python main.py --cfg "configs/KEPLA.yaml" --data ${dataset} --split "random"
 ```
 
 For the cross-domain experiments with KEPLA, you can directly run the following command. `${dataset}` could be `pdbbind`.
