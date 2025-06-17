@@ -44,9 +44,8 @@ def main():
     dataFolder = os.path.join(dataFolder, str(args.split))
 
     if not cfg.DA.TASK:
-        train_path = os.path.join(dataFolder, 'train_90per.csv')
-        # val_path = os.path.join(dataFolder, "val.csv")
-        val_path = os.path.join(dataFolder, "test.csv")
+        train_path = os.path.join(dataFolder, 'train.csv')
+        val_path = os.path.join(dataFolder, "val.csv")
         test_path = os.path.join(dataFolder, "test.csv")
         df_train = pd.read_csv(train_path)
         df_val = pd.read_csv(val_path)
