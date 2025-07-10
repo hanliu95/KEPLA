@@ -80,9 +80,7 @@ class KEPLA(nn.Module):
         )
 
         self.mlp_classifier = MLPDecoder(mlp_in_dim, mlp_hidden_dim, mlp_out_dim, binary=out_binary)
-
-        # self.kg = KGEModel(nentity=5546, nrelation=3, entity_dim=128, gamma=12.0)  # ++
-        self.kg = KGEModel(nentity=1000, nrelation=3, entity_dim=128, gamma=12.0)  # ++
+        self.kg = KGEModel(nentity=1000, nrelation=3, entity_dim=128, gamma=12.0) 
 
     def forward(self, bg_d, v_p, smiles, ids, mode="train"):
         v_d = self.drug_extractor(bg_d)
@@ -148,21 +146,11 @@ class MLPDecoder(nn.Module):
         self.fc3 = nn.Linear(hidden_dim, out_dim)
         self.bn3 = nn.BatchNorm1d(out_dim)
         self.fc4 = nn.Linear(out_dim, binary)
-        # self.drop1 = nn.Dropout(p=0.2)
-        # self.drop2 = nn.Dropout(p=0.2)
-        # self.drop3 = nn.Dropout(p=0.2)
 
     def forward(self, x):
         x = self.bn1(F.relu(self.fc1(x)))
-        # x = self.drop1(x)
         x = self.bn2(F.relu(self.fc2(x)))
-        # x = self.drop2(x)
         x = self.bn3(F.relu(self.fc3(x)))
-        # x = self.drop3(x)
-
-        # x = self.bn1(F.sigmoid(self.fc1(x)))
-        # x = self.bn2(F.sigmoid(self.fc2(x)))
-        # x = self.bn3(F.sigmoid(self.fc3(x)))
         x = self.fc4(x)
         return x
 
