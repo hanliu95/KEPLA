@@ -63,9 +63,7 @@ class KEPLA(nn.Module):
         protein_padding = config["PROTEIN"]["PADDING"]
         out_binary = config["DECODER"]["BINARY"]
         ban_heads = config["BCN"]["HEADS"]
-        # self.drug_extractor = MolecularGCN(in_feats=drug_in_feats, dim_embedding=drug_embedding,
-        #                                    padding=drug_padding,
-        #                                    hidden_feats=drug_hidden_feats)
+        
         self.drug_extractor = MolecularGCN(in_feats=drug_in_feats, dim_embedding=drug_embedding,
                                            padding=drug_padding,
                                            hidden_feats=drug_hidden_feats)
@@ -73,10 +71,8 @@ class KEPLA(nn.Module):
         self.fc = nn.Sequential(
                 nn.Linear(2560, 512),
                 nn.ReLU(),
-                # nn.BatchNorm1d(512),
                 nn.Linear(512, 128),
-                nn.ReLU(),
-                # nn.BatchNorm1d(128)
+                nn.ReLU()
         )
 
         self.mlp_classifier = MLPDecoder(mlp_in_dim, mlp_hidden_dim, mlp_out_dim, binary=out_binary)
