@@ -13,10 +13,7 @@ def RMSELoss(pred_output, labels):
     # loss_fct = nn.MSELoss()
     loss_fct = nn.L1Loss()
     n = torch.squeeze(pred_output, 1)
-    # return n, torch.sqrt(torch.mean((pred_output-labels)**2))
     loss = loss_fct(n, labels)
-    # print(n)
-    # print(labels)
     return n, loss
 
 
@@ -80,11 +77,6 @@ class KEPLA(nn.Module):
 
     def forward(self, bg_d, v_p, smiles, ids, mode="train"):
         v_d = self.drug_extractor(bg_d)
-        # v_p = self.protein_extractor(v_p)
-        # f, att = self.bcn(v_d, v_p)
-        # v_d = torch.mean(v_d, dim=1)
-        # v_p = torch.mean(v_p, dim=1)
-        # print(v_d.shape)
         v_p = self.fc(v_p.float())
         v_p_global = torch.mean(v_p, dim=1)
         v_d_global = torch.mean(v_d, dim=1)
@@ -97,13 +89,10 @@ class KEPLA(nn.Module):
         v_p = torch.matmul(attn_p, v_p).squeeze(1)
         
         f = torch.cat((v_d, v_p), 1)
-        # f = torch.cat((v_d_global, v_p_global), 1)
         score = self.mlp_classifier(f)
 
-        # kg_score = self.kg(v_d, v_p, smiles, ids)
         kg_score = self.kg(v_d_global, v_p_global, smiles, ids)
 
-        # print(mode)
         if mode == "train":
             return v_d, v_p, f, score, kg_score
         elif mode == "eval":
@@ -118,7 +107,6 @@ class MolecularGCN(nn.Module):
             with torch.no_grad():
                 self.init_transform.weight[-1].fill_(0)
         self.gnn = GCN(in_feats=dim_embedding, hidden_feats=hidden_feats, activation=activation)
-        # self.gnn = GraphSAGE(in_feats=dim_embedding, hidden_feats=hidden_feats, activation=activation)
         self.output_feats = hidden_feats[-1]
 
     def forward(self, batch_graph):
@@ -170,7 +158,7 @@ class RandomLayer(nn.Module):
         self.random_matrix = [val.cuda() for val in self.random_matrix]
 
 
-# newly added KG module
+# KG module
 class KGEModel(nn.Module):
     def __init__(self, nentity, nrelation, entity_dim, gamma):
 
@@ -204,8 +192,6 @@ class KGEModel(nn.Module):
         r_index = []
         t_index = []
         v_d = self.fc1(v_d)
-        # x = self.encoder(x)
-        # x = torch.mean(x, dim=1)
         count = 0
         for id in ids:
             if id in self.KG_dict.keys():
