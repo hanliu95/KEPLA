@@ -16,7 +16,6 @@ class DTIDataset(data.Dataset):
         self.atom_featurizer = CanonicalAtomFeaturizer()
         self.bond_featurizer = CanonicalBondFeaturizer(self_loop=True)
         self.fc = partial(smiles_to_bigraph, add_self_loop=True)
-        # self.protein_esm_dict = np.load('./datasets/pdbbind/protein_esm3b_dict.npy', allow_pickle=True).item()
         self.protein_esm_dict = np.load('../datasets/pdbbind/protein_esm3b_mer9_dict.npy', allow_pickle=True).item()
 
     def __len__(self):
@@ -40,7 +39,6 @@ class DTIDataset(data.Dataset):
         v_p = self.protein_esm_dict[v_p]
         v_p = integer_label_protein(v_p)
         y = self.df.iloc[index]["Y"]
-        # y = torch.Tensor([y])
 
         smi = self.df.iloc[index]['SMILES']
         uniprot = self.df.iloc[index]['Uniprot']
