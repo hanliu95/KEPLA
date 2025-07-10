@@ -77,9 +77,6 @@ class Trainer(object):
 
         self.original_random = config["DA"]["ORIGINAL_RANDOM"]
 
-        # self.tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t6_8M_UR50D")
-        # self.esm_model = EsmModel.from_pretrained("facebook/esm2_t6_8M_UR50D").cuda()
-
     def da_lambda_decay(self):
         delta_epoch = self.current_epoch - self.da_init_epoch
         non_init_epoch = self.epochs - self.da_init_epoch
@@ -348,9 +345,4 @@ class Trainer(object):
         sd_error = np.array(y_label) - (intercept + slope * np.array(y_pred))
         sd = np.sqrt(np.sum(np.power(sd_error, 2)) / (len(y_label) - 1))
 
-        if dataloader == "test":
-
-            return rmse, mae, r_p, sd, test_loss
-            
-        else:
-            return rmse, mae, r_p, sd, test_loss
+        return rmse, mae, r_p, sd, test_loss
