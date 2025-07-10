@@ -55,19 +55,18 @@ class Trainer(object):
 
         self.best_model = None
         self.best_epoch = None
-        self.best_auroc = 100
+        self.best_rmse = 100
 
         self.train_loss_epoch = []
         self.train_model_loss_epoch = []
         self.train_da_loss_epoch = []
-        self.val_loss_epoch, self.val_auroc_epoch = [], []
+        self.val_loss_epoch, self.val_rmse_epoch = [], []
         self.test_metrics = {}
         self.config = config
         self.output_dir = config["RESULT"]["OUTPUT_DIR"]
 
-        valid_metric_header = ["# Epoch", "AUROC", "AUPRC", "Val_loss"]
-        test_metric_header = ["# Best Epoch", "AUROC", "AUPRC", "F1", "Sensitivity", "Specificity", "Accuracy",
-                              "Threshold", "Test_loss"]
+        valid_metric_header = ["# Epoch", "RMSE", "MAE", "Val_loss"]
+        test_metric_header = ["# Best Epoch", "RMSE", "MAE", "R", "SD", "Test_loss"]
         if not self.is_da:
             train_metric_header = ["# Epoch", "Train_loss"]
         else:
@@ -112,58 +111,41 @@ class Trainer(object):
                         self.experiment.log_metric("train_epoch da loss", da_loss, epoch=self.current_epoch)
             self.train_table.add_row(train_lst)
             self.train_loss_epoch.append(train_loss)
-            auroc, auprc, r_p, sd, val_loss = self.test(dataloader="val")
+            rmse, mae, r_p, sd, val_loss = self.test(dataloader="val")
             if self.experiment:
                 self.experiment.log_metric("valid_epoch model loss", val_loss, epoch=self.current_epoch)
-                self.experiment.log_metric("valid_epoch auroc", auroc, epoch=self.current_epoch)
-                self.experiment.log_metric("valid_epoch auprc", auprc, epoch=self.current_epoch)
-            val_lst = ["epoch " + str(self.current_epoch)] + list(map(float2str, [auroc, auprc, val_loss]))
+                self.experiment.log_metric("valid_epoch rmse", rmse, epoch=self.current_epoch)
+                self.experiment.log_metric("valid_epoch mae", mae, epoch=self.current_epoch)
+            val_lst = ["epoch " + str(self.current_epoch)] + list(map(float2str, [rmse, mae, val_loss]))
             self.val_table.add_row(val_lst)
             self.val_loss_epoch.append(val_loss)
-            self.val_auroc_epoch.append(auroc)
-            if auroc <= self.best_auroc:
+            self.val_rmse_epoch.append(rmse)
+            if rmse <= self.best_rmse:
                 print('copy!')
                 self.best_model = copy.deepcopy(self.model)
-                self.best_auroc = auroc
+                self.best_rmse = rmse
                 self.best_epoch = self.current_epoch
             print('Validation at Epoch ' + str(self.current_epoch) + ' with validation loss ' + str(val_loss), " RMSE "
-                  + str(auroc) + " MAE " + str(auprc) + " R " + str(r_p) + " SD " + str(sd))
-        # auroc, auprc, f1, sensitivity, specificity, accuracy, test_loss, thred_optim, precision = self.test(dataloader="test")
-        # test_lst = ["epoch " + str(self.best_epoch)] + list(map(float2str, [auroc, auprc, f1, sensitivity, specificity,
-        #                                                                     accuracy, thred_optim, test_loss]))
-        auroc, auprc, r_p, sd, test_loss = self.test(dataloader="test")
-        # self.test_table.add_row(test_lst)
-        # print('Test at Best Model of Epoch ' + str(self.best_epoch) + ' with test loss ' + str(test_loss), " AUROC "
-        #       + str(auroc) + " AUPRC " + str(auprc) + " Sensitivity " + str(sensitivity) + " Specificity " +
-        #       str(specificity) + " Accuracy " + str(accuracy) + " Thred_optim " + str(thred_optim))
+                  + str(rmse) + " MAE " + str(mae) + " R " + str(r_p) + " SD " + str(sd))
+
+        rmse, mae, r_p, sd, test_loss = self.test(dataloader="test")
+
         print('Test at Best Model of Epoch ' + str(self.best_epoch) + ' with test loss ' + str(test_loss), " RMSE "
-              + str(auroc) + " MAE " + str(auprc) + " R " + str(r_p) + " SD " + str(sd))
-        self.test_metrics["auroc"] = auroc
-        self.test_metrics["auprc"] = auprc
+              + str(rmse) + " MAE " + str(mae) + " R " + str(r_p) + " SD " + str(sd))
+        self.test_metrics["rmse"] = rmse
+        self.test_metrics["mae"] = mae
         self.test_metrics["test_loss"] = test_loss
         self.test_metrics["r"] = r_p
         self.test_metrics["sd"] = sd
-        # self.test_metrics["sensitivity"] = sensitivity
-        # self.test_metrics["specificity"] = specificity
-        # self.test_metrics["accuracy"] = accuracy
-        # self.test_metrics["thred_optim"] = thred_optim
-        # self.test_metrics["best_epoch"] = self.best_epoch
-        # self.test_metrics["F1"] = f1
-        # self.test_metrics["Precision"] = precision
+
         self.save_result()
         if self.experiment:
-            self.experiment.log_metric("valid_best_auroc", self.best_auroc)
+            self.experiment.log_metric("valid_best_rmse", self.best_rmse)
             self.experiment.log_metric("valid_best_epoch", self.best_epoch)
-            self.experiment.log_metric("test_auroc", self.test_metrics["auroc"])
-            self.experiment.log_metric("test_auprc", self.test_metrics["auprc"])
+            self.experiment.log_metric("test_rmse", self.test_metrics["rmse"])
+            self.experiment.log_metric("test_mae", self.test_metrics["mae"])
             self.experiment.log_metric("r", self.test_metrics["r"])
             self.experiment.log_metric("sd", self.test_metrics["sd"])
-            # self.experiment.log_metric("test_sensitivity", self.test_metrics["sensitivity"])
-            # self.experiment.log_metric("test_specificity", self.test_metrics["specificity"])
-            # self.experiment.log_metric("test_accuracy", self.test_metrics["accuracy"])
-            # self.experiment.log_metric("test_threshold", self.test_metrics["thred_optim"])
-            # self.experiment.log_metric("test_f1", self.test_metrics["F1"])
-            # self.experiment.log_metric("test_precision", self.test_metrics["Precision"])
         return self.test_metrics
 
     def save_result(self):
@@ -207,30 +189,14 @@ class Trainer(object):
         ss = time()
         for i, (v_d, v_p, labels, smiles, ids) in enumerate(self.train_dataloader):
             self.step += 1
-
-            # print(v_p)
-            # inputs = self.tokenizer(list(v_p), return_tensors="pt")
-            # inputs = inputs.to(self.device)
-            # outputs = self.esm_model(**inputs)
-            # v_p = outputs.last_hidden_state
-
-            # print(v_p.shape)
             s = time()
 
             v_d, v_p, labels = v_d.to(self.device), v_p.to(self.device), labels.float().to(self.device)
             self.optim.zero_grad()
-            # v_d, v_p, f, score = self.model(v_d, v_p)
             v_d, v_p, f, score, kg_score = self.model(v_d, v_p, smiles, ids)  # ++
             if self.n_class == 1:
-                # n, loss = binary_cross_entropy(score, labels)
-                # print(score)
-                # print(labels)
                 n, loss = RMSELoss(score, labels)
-                # kg_score = F.logsigmoid(kg_score).squeeze(dim=1)  # ++
-                # kg_loss = - kg_score.mean()  # ++
                 kg_loss = kg_score.squeeze(dim=1).mean()
-                # mol_kg_loss = mol_kg_score.squeeze(dim=1).mean()
-                # kg_loss = kg_score
                 loss = loss + kg_loss
             else:
                 n, loss = cross_entropy_logits(score, labels)
@@ -278,7 +244,6 @@ class Trainer(object):
                     reverse_f = ReverseLayerF.apply(f, self.alpha)
                     softmax_output = torch.nn.Softmax(dim=1)(score)
                     softmax_output = softmax_output.detach()
-                    # reverse_output = ReverseLayerF.apply(softmax_output, self.alpha)
                     if self.original_random:
                         random_out = self.random_layer.forward([reverse_f, softmax_output])
                         adv_output_src_score = self.domain_dmm(random_out.view(-1, random_out.size(1)))
@@ -294,7 +259,6 @@ class Trainer(object):
                     reverse_f_t = ReverseLayerF.apply(f_t, self.alpha)
                     softmax_output_t = torch.nn.Softmax(dim=1)(t_score)
                     softmax_output_t = softmax_output_t.detach()
-                    # reverse_output_t = ReverseLayerF.apply(softmax_output_t, self.alpha)
                     if self.original_random:
                         random_out_t = self.random_layer.forward([reverse_f_t, softmax_output_t])
                         adv_output_tgt_score = self.domain_dmm(random_out_t.view(-1, random_out_t.size(1)))
@@ -363,10 +327,6 @@ class Trainer(object):
             self.model.eval()
             for i, (v_d, v_p, labels, smiles, ids) in enumerate(data_loader):
 
-                # inputs = self.tokenizer(list(v_p), return_tensors="pt")
-                # inputs = inputs.to(self.device)
-                # outputs = self.esm_model(**inputs)
-                # v_p = outputs.last_hidden_state
 
                 v_d, v_p, labels = v_d.to(self.device), v_p.to(self.device), labels.float().to(self.device)
                 if dataloader == "val":
@@ -374,17 +334,14 @@ class Trainer(object):
                 elif dataloader == "test":
                     v_d, v_p, f, score, kg_score = self.best_model(v_d, v_p, smiles, ids)
                 if self.n_class == 1:
-                    # n, loss = binary_cross_entropy(score, labels)
                     n, loss = RMSELoss(score, labels)
                 else:
                     n, loss = cross_entropy_logits(score, labels)
                 test_loss += loss.item()
                 y_label = y_label + labels.to("cpu").tolist()
                 y_pred = y_pred + n.to("cpu").tolist()
-        # auroc = roc_auc_score(y_label, y_pred)
-        # auprc = average_precision_score(y_label, y_pred)
-        auroc = np.sqrt(mean_squared_error(y_label, y_pred))
-        auprc = mean_absolute_error(y_label, y_pred)
+        rmse = np.sqrt(mean_squared_error(y_label, y_pred))
+        mae = mean_absolute_error(y_label, y_pred)
         test_loss = test_loss / num_batches
         r_p = scipy.stats.pearsonr(y_label, y_pred)[0]
         slope, intercept, _, _, _ = scipy.stats.linregress(y_pred, y_label)
@@ -392,30 +349,8 @@ class Trainer(object):
         sd = np.sqrt(np.sum(np.power(sd_error, 2)) / (len(y_label) - 1))
 
         if dataloader == "test":
-            # fpr, tpr, thresholds = roc_curve(y_label, y_pred)
-            # prec, recall, _ = precision_recall_curve(y_label, y_pred)
-            # precision = tpr / (tpr + fpr)
-            # f1 = 2 * precision * tpr / (tpr + precision + 0.00001)
-            # thred_optim = thresholds[5:][np.argmax(f1[5:])]
-            # y_pred_s = [1 if i else 0 for i in (y_pred >= thred_optim)]
-            # cm1 = confusion_matrix(y_label, y_pred_s)
-            # accuracy = (cm1[0, 0] + cm1[1, 1]) / sum(sum(cm1))
-            # sensitivity = cm1[0, 0] / (cm1[0, 0] + cm1[0, 1])
-            # specificity = cm1[1, 1] / (cm1[1, 0] + cm1[1, 1])
-            # if self.experiment:
-            #     self.experiment.log_curve("test_roc curve", fpr, tpr)
-            #     self.experiment.log_curve("test_pr curve", recall, prec)
-            # precision1 = precision_score(y_label, y_pred_s)
-            # return auroc, auprc, np.max(f1[5:]), sensitivity, specificity, accuracy, test_loss, thred_optim, precision1
-            # print(y_label)
-            # print(y_pred)
-            # r_p = scipy.stats.pearsonr(y_label, y_pred)[0]
-            # slope, intercept, _, _, _ = scipy.stats.linregress(y_pred, y_label)
-            # print(slope)
-            # print(intercept)
-            # sd_error = np.array(y_label) - (intercept + slope * np.array(y_pred))
-            # sd = np.sqrt(np.sum(np.power(sd_error, 2)) / (len(y_label) - 1))
-            return auroc, auprc, r_p, sd, test_loss
+
+            return rmse, mae, r_p, sd, test_loss
             
         else:
-            return auroc, auprc, r_p, sd, test_loss
+            return rmse, mae, r_p, sd, test_loss
