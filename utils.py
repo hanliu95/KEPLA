@@ -42,7 +42,7 @@ def set_seed(seed=1000):
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
-    torch.cuda.manual_seed_all(seed)  # 为所有GPU设置随机种子
+    torch.cuda.manual_seed_all(seed) 
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.enabled = True
@@ -53,7 +53,6 @@ def set_seed(seed=1000):
 def graph_collate_func(x):
     d, p, y, smi, id = zip(*x)
     d = dgl.batch(d)
-    # return d, torch.tensor(np.array(p)), torch.tensor(y), id
     return d, torch.tensor(np.array(p)), torch.tensor(y), smi, id
 
 
