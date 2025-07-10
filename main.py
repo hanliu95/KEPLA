@@ -129,13 +129,11 @@ def main():
         else:
             domain_dmm = Discriminator(input_size=cfg["DECODER"]["IN_DIM"] * cfg["DECODER"]["BINARY"],
                                        n_class=cfg["DECODER"]["BINARY"]).to(device)
-        # params = list(model.parameters()) + list(domain_dmm.parameters())
         opt = torch.optim.Adam(model.parameters(), lr=cfg.SOLVER.LR)
         opt_da = torch.optim.Adam(domain_dmm.parameters(), lr=cfg.SOLVER.DA_LR)
     else:
         opt = torch.optim.Adam(model.parameters(), lr=cfg.SOLVER.LR)
-        # opt = torch.optim.SGD(model.parameters(), lr=cfg.SOLVER.LR, weight_decay=0.0)
-
+        
     torch.backends.cudnn.benchmark = True
 
     if not cfg.DA.USE:
