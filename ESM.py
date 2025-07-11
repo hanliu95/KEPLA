@@ -13,7 +13,6 @@ model = EsmModel.from_pretrained("facebook/esm2_t36_3B_UR50D").cuda()
 
 Protein_list = df_train['Protein'].tolist() + df_val['Protein'].tolist()
 Protein_set = set(Protein_list)
-print(len(Protein_set))
 
 protein_esm_dict = dict()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
