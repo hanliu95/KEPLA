@@ -1,0 +1,1000 @@
+0: cytosol
+1: cytoplasm
+2: metal ion binding
+3: plasma membrane
+4: nucleus
+5: ATP binding
+6: identical protein binding
+7: extracellular region
+8: zinc ion binding
+9: proteolysis
+10: membrane
+11: nucleoplasm
+12: extracellular space
+13: extracellular exosome
+14: mitochondrion
+15: DNA binding
+16: protein homodimerization activity
+17: magnesium ion binding
+18: serine-type endopeptidase activity
+19: protein-containing complex
+20: positive regulation of transcription by RNA polymerase II
+21: aspartic-type endopeptidase activity
+22: carbohydrate metabolic process
+23: RNA binding
+24: signal transduction
+25: carbohydrate binding
+26: cell surface
+27: apoptotic process
+28: protein serine/threonine kinase activity
+29: negative regulation of apoptotic process
+30: calcium ion binding
+31: glutamatergic synapse
+32: protein serine kinase activity
+33: chromatin
+34: negative regulation of transcription by RNA polymerase II
+35: response to antibiotic
+36: host cell plasma membrane
+37: perinuclear region of cytoplasm
+38: positive regulation of cell population proliferation
+39: endoplasmic reticulum
+40: Golgi apparatus
+41: signaling receptor binding
+42: regulation of DNA-templated transcription
+43: GTP binding
+44: protein phosphorylation
+45: enzyme binding
+46: virion membrane
+47: host cell nucleus
+48: outer membrane-bounded periplasmic space
+49: negative regulation of DNA-templated transcription
+50: regulation of transcription by RNA polymerase II
+51: external side of plasma membrane
+52: innate immune response
+53: protein kinase activity
+54: DNA-binding transcription factor activity
+55: protein kinase binding
+56: nucleotide binding
+57: response to xenobiotic stimulus
+58: positive regulation of DNA-templated transcription
+59: dendrite
+60: structural molecule activity
+61: symbiont entry into host cell
+62: RNA-directed DNA polymerase activity
+63: cell adhesion
+64: DNA damage response
+65: intracellular signal transduction
+66: neuronal cell body
+67: ATP hydrolysis activity
+68: chromatin binding
+69: cell differentiation
+70: positive regulation of gene expression
+71: protein tyrosine kinase activity
+72: endoplasmic reticulum membrane
+73: immune response
+74: establishment of integrated proviral latency
+75: viral genome integration into host DNA
+76: response to hypoxia
+77: Golgi membrane
+78: mitochondrial matrix
+79: RNA polymerase II cis-regulatory region sequence-specific DNA binding
+80: methylation
+81: viral nucleocapsid
+82: ubiquitin protein ligase binding
+83: regulation of cell cycle
+84: focal adhesion
+85: positive regulation of cell migration
+86: lysosome
+87: periplasmic space
+88: centrosome
+89: intracellular membrane-bounded organelle
+90: peptidase activity
+91: DNA-binding transcription factor activity, RNA polymerase II-specific
+92: RNA stem-loop binding
+93: manganese ion binding
+94: DNA recombination
+95: axon
+96: nucleolus
+97: positive regulation of apoptotic process
+98: nuclear receptor activity
+99: GTPase activity
+100: lipid binding
+101: protein autophosphorylation
+102: membrane raft
+103: endosome
+104: dendritic spine
+105: glycolytic process
+106: collagen-containing extracellular matrix
+107: toxin activity
+108: transcription cis-regulatory region binding
+109: postsynaptic density
+110: metalloendopeptidase activity
+111: adaptive immune response
+112: apical plasma membrane
+113: learning or memory
+114: RNA-DNA hybrid ribonuclease activity
+115: DNA integration
+116: receptor complex
+117: endopeptidase activity
+118: ATP-binding cassette (ABC) transporter complex
+119: cysteine-type endopeptidase activity
+120: postsynapse
+121: negative regulation of cell population proliferation
+122: negative regulation of gene expression
+123: peptidyl-serine phosphorylation
+124: regulation of apoptotic process
+125: positive regulation of phosphatidylinositol 3-kinase/protein kinase B signal transduction
+126: peptidyl-tyrosine phosphorylation
+127: viral translational frameshifting
+128: gluconeogenesis
+129: synapse
+130: virion attachment to host cell
+131: regulation of cell shape
+132: postsynaptic membrane
+133: DNA repair
+134: cellular response to lipopolysaccharide
+135: non-membrane spanning protein tyrosine kinase activity
+136: sequence-specific double-stranded DNA binding
+137: protein-containing complex binding
+138: nuclear speck
+139: RNA-dependent RNA polymerase activity
+140: viral RNA genome replication
+141: virus-mediated perturbation of host defense response
+142: polysaccharide catabolic process
+143: purine ribonucleoside salvage
+144: cell division
+145: transcription by RNA polymerase II
+146: protein domain specific binding
+147: regulation of cell population proliferation
+148: response to lipopolysaccharide
+149: ficolin-1-rich granule lumen
+150: positive regulation of ERK1 and ERK2 cascade
+151: positive regulation of protein phosphorylation
+152: exoribonuclease H activity
+153: early endosome
+154: angiogenesis
+155: sequence-specific DNA binding
+156: fusion of virus membrane with host endosome membrane
+157: symbiont-mediated suppression of host type I interferon-mediated signaling pathway
+158: beta-lactamase activity
+159: collagen catabolic process
+160: phospholipid binding
+161: transmitter-gated monoatomic ion channel activity involved in regulation of postsynaptic membrane potential
+162: endoplasmic reticulum lumen
+163: ubiquitin protein ligase activity
+164: aminopeptidase activity
+165: modulation of chemical synaptic transmission
+166: DNA-directed DNA polymerase activity
+167: protein phosphatase binding
+168: protease binding
+169: serine-type peptidase activity
+170: extracellular matrix disassembly
+171: DNA-binding transcription activator activity, RNA polymerase II-specific
+172: inflammatory response
+173: RNA helicase activity
+174: ribonucleoprotein complex
+175: transmembrane transport
+176: one-carbon metabolic process
+177: defense response
+178: neuron projection
+179: cellular response to hypoxia
+180: actin cytoskeleton organization
+181: positive regulation of cell growth
+182: presynaptic membrane
+183: kinase activity
+184: chemotaxis
+185: host multivesicular body
+186: RNA polymerase II-specific DNA-binding transcription factor binding
+187: host cell endoplasmic reticulum membrane
+188: viral envelope
+189: exo-alpha-(2->3)-sialidase activity
+190: exo-alpha-(2->6)-sialidase activity
+191: exo-alpha-(2->8)-sialidase activity
+192: cell surface receptor signaling pathway
+193: cytoplasmic vesicle
+194: T cell receptor signaling pathway
+195: nuclear body
+196: mitochondrial outer membrane
+197: glucose homeostasis
+198: protein ubiquitination
+199: nuclear membrane
+200: B cell receptor signaling pathway
+201: neuron apoptotic process
+202: endosome membrane
+203: blood coagulation
+204: male gonad development
+205: peptide binding
+206: host cell
+207: synaptic transmission, glutamatergic
+208: spermatogenesis
+209: postsynaptic density membrane
+210: chemical synaptic transmission
+211: endonuclease activity
+212: nucleotidyltransferase activity
+213: glutathione metabolic process
+214: hydrolase activity
+215: host cell perinuclear region of cytoplasm
+216: channel activity
+217: clathrin-dependent endocytosis of virus by host cell
+218: induction by virus of host autophagy
+219: monoatomic ion transmembrane transport
+220: cell wall organization
+221: signaling receptor activity
+222: positive regulation of type II interferon production
+223: chromatin remodeling
+224: cell migration
+225: epidermal growth factor receptor signaling pathway
+226: insulin receptor signaling pathway
+227: cellular response to tumor necrosis factor
+228: cytoskeleton
+229: histone binding
+230: negative regulation of neuron apoptotic process
+231: positive regulation of MAPK cascade
+232: positive regulation of cold-induced thermogenesis
+233: positive regulation of tumor necrosis factor production
+234: positive regulation of canonical NF-kappaB signal transduction
+235: presynapse
+236: in utero embryonic development
+237: kidney development
+238: response to oxidative stress
+239: tetrahydrofolate biosynthetic process
+240: cellular senescence
+241: defense response to Gram-positive bacterium
+242: defense response to bacterium
+243: ATP-binding cassette (ABC) transporter complex, substrate-binding subunit-containing
+244: symbiont-mediated suppression of host gene expression
+245: viral penetration into host nucleus
+246: transcription regulator complex
+247: steroid binding
+248: late endosome
+249: metallopeptidase activity
+250: scaffold protein binding
+251: symbiont-mediated suppression of host cytoplasmic pattern recognition receptor signaling pathway via inhibition of MAVS activity
+252: peptidoglycan biosynthetic process
+253: ligand-gated monoatomic ion channel activity
+254: G protein-coupled receptor activity
+255: protein modification process
+256: MAPK cascade
+257: DNA replication
+258: positive regulation of cytosolic calcium ion concentration
+259: basolateral plasma membrane
+260: midbody
+261: cellular response to insulin stimulus
+262: amino acid biosynthetic process
+263: NAD binding
+264: cytokine-mediated signaling pathway
+265: terminal bouton
+266: gene expression
+267: metalloaminopeptidase activity
+268: mitochondrial inner membrane
+269: autophagy
+270: integrin-mediated signaling pathway
+271: positive regulation of peptidyl-tyrosine phosphorylation
+272: early endosome membrane
+273: calmodulin binding
+274: cellular response to reactive oxygen species
+275: heparin binding
+276: protein-folding chaperone binding
+277: protein processing
+278: GDP binding
+279: protein folding
+280: symbiont-mediated activation of host apoptosis
+281: lysosomal lumen
+282: perikaryon
+283: synaptic vesicle
+284: odorant binding
+285: small molecule binding
+286: collagen binding
+287: phagocytic vesicle membrane
+288: chitin catabolic process
+289: symbiont-mediated suppression of host JAK-STAT cascade via inhibition of STAT1 activity
+290: N-acetyl-beta-D-galactosaminidase activity
+291: beta-glucosidase activity
+292: protein catabolic process
+293: tRNA binding
+294: translation
+295: extracellular matrix organization
+296: negative regulation of translation
+297: integrin binding
+298: secretory granule lumen
+299: pyridoxal phosphate binding
+300: defense response to virus
+301: G protein-coupled receptor signaling pathway
+302: positive regulation of proteasomal ubiquitin-dependent protein catabolic process
+303: protein stabilization
+304: positive regulation of angiogenesis
+305: platelet activation
+306: epithelial cell differentiation
+307: NADP binding
+308: SH2 domain binding
+309: glycosyltransferase activity
+310: endocytosis
+311: multicellular organism growth
+312: SH3 domain binding
+313: molecular adaptor activity
+314: Wnt signaling pathway
+315: positive regulation of canonical Wnt signaling pathway
+316: protein transport
+317: cellular response to heat
+318: phosphotyrosine residue binding
+319: cellular response to hydrogen peroxide
+320: positive regulation of fibroblast proliferation
+321: ATPase binding
+322: cadherin binding
+323: phosphorylation
+324: unfolded protein binding
+325: azurophil granule lumen
+326: protein refolding
+327: negative regulation of inflammatory response
+328: DNA-templated transcription
+329: lysosomal membrane
+330: response to ethanol
+331: regulation of gene expression
+332: DNA-binding transcription factor binding
+333: peroxisome
+334: RNA polymerase II transcription regulator complex
+335: mRNA transcription by RNA polymerase II
+336: glutamate-gated receptor activity
+337: ligand-gated monoatomic ion channel activity involved in regulation of presynaptic membrane potential
+338: MHC class I protein complex
+339: peptide transport
+340: thiamine pyrophosphate binding
+341: host cell lipid droplet
+342: symbiont-mediated perturbation of host cell cycle G1/S transition checkpoint
+343: symbiont-mediated suppression of host TRAF-mediated signal transduction
+344: transformation of host cell by virus
+345: beta-N-acetylhexosaminidase activity
+346: antibiotic catabolic process
+347: lipid catabolic process
+348: biotin binding
+349: cellular response to virus
+350: peptidyl-threonine phosphorylation
+351: positive regulation of insulin secretion
+352: protein heterodimerization activity
+353: positive regulation of mitotic cell cycle
+354: proteasome-mediated ubiquitin-dependent protein catabolic process
+355: regulation of protein stability
+356: ubiquitin-protein transferase activity
+357: protein-containing complex assembly
+358: estrogen response element binding
+359: transcription coactivator activity
+360: epithelial cell proliferation
+361: T cell costimulation
+362: negative regulation of transforming growth factor beta receptor signaling pathway
+363: iron ion binding
+364: carbonate dehydratase activity
+365: glutathione transferase activity
+366: aromatic amino acid family biosynthetic process
+367: regulation of inflammatory response
+368: cellulose catabolic process
+369: Schaffer collateral - CA1 synapse
+370: female pregnancy
+371: learning
+372: response to toxic substance
+373: visual learning
+374: protein import into nucleus
+375: dTTP biosynthetic process
+376: neuromuscular junction
+377: cell-cell adhesion
+378: neural tube closure
+379: positive regulation of neuron apoptotic process
+380: cellular response to xenobiotic stimulus
+381: ADP binding
+382: positive regulation of NF-kappaB transcription factor activity
+383: lyase activity
+384: carboxypeptidase activity
+385: disordered domain specific binding
+386: hormone-mediated signaling pathway
+387: B cell differentiation
+388: response to bacterium
+389: positive regulation of T cell mediated cytotoxicity
+390: axonogenesis
+391: regulation of translation
+392: ATP-dependent protein folding chaperone
+393: transcription coactivator binding
+394: response to estrogen
+395: double-strand break repair
+396: cell-cell junction
+397: cellular response to amyloid-beta
+398: mRNA processing
+399: proteolysis involved in protein catabolic process
+400: cellular response to retinoic acid
+401: glucose metabolic process
+402: cysteine-type peptidase activity
+403: excitatory postsynaptic potential
+404: nervous system development
+405: peptide catabolic process
+406: positive regulation of protein ubiquitination
+407: cell morphogenesis
+408: lumenal side of endoplasmic reticulum membrane
+409: ribonucleoside triphosphate phosphatase activity
+410: 'de novo' IMP biosynthetic process
+411: hydrolase activity, hydrolyzing O-glycosyl compounds
+412: cytokine activity
+413: nucleoside diphosphate kinase activity
+414: IMP salvage
+415: chitin binding
+416: chitinase activity
+417: host cell mitochondrial membrane
+418: beta-galactosidase activity
+419: extracellular matrix
+420: arachidonic acid secretion
+421: negative regulation of T cell proliferation
+422: ruffle membrane
+423: chromosome, telomeric region
+424: fatty acid biosynthetic process
+425: protein homotetramerization
+426: response to organic cyclic compound
+427: specific granule lumen
+428: mRNA binding
+429: phospholipase C-activating G protein-coupled receptor signaling pathway
+430: mitotic cell cycle
+431: p53 binding
+432: 'de novo' UMP biosynthetic process
+433: host cell cytoplasm
+434: fatty acid binding
+435: chorismate biosynthetic process
+436: cytoplasmic side of plasma membrane
+437: positive regulation of apoptotic signaling pathway
+438: damaged DNA binding
+439: vesicle
+440: behavioral fear response
+441: memory
+442: regulation of blood pressure
+443: response to amphetamine
+444: response to cytokine
+445: NAD+ ADP-ribosyltransferase activity
+446: NAD+-protein ADP-ribosyltransferase activity
+447: microtubule binding
+448: chromatin organization
+449: liver development
+450: response to insulin
+451: acrosomal vesicle
+452: ruffle
+453: cellular response to transforming growth factor beta stimulus
+454: endothelial cell migration
+455: regulation of actin cytoskeleton organization
+456: regulation of cell adhesion
+457: negative regulation of extrinsic apoptotic signaling pathway
+458: circadian rhythm
+459: positive regulation of miRNA transcription
+460: positive regulation of peptidyl-serine phosphorylation
+461: plasminogen activation
+462: nucleic acid binding
+463: blood microparticle
+464: fibrinolysis
+465: positive regulation of protein localization to nucleus
+466: myelin sheath
+467: regulation of long-term neuronal synaptic plasticity
+468: antibacterial humoral response
+469: recycling endosome membrane
+470: nuclear receptor-mediated steroid hormone signaling pathway
+471: response to estradiol
+472: T cell activation
+473: T cell differentiation in thymus
+474: placenta development
+475: positive regulation of B cell proliferation
+476: cholesterol homeostasis
+477: positive regulation of inflammatory response
+478: protein localization
+479: transforming growth factor beta receptor signaling pathway
+480: tertiary granule lumen
+481: lipid metabolic process
+482: skeletal system development
+483: response to heat
+484: secretory granule membrane
+485: protein-DNA complex
+486: negative regulation of anoikis
+487: nuclear retinoid X receptor binding
+488: retinoic acid receptor signaling pathway
+489: glutamate-gated calcium ion channel activity
+490: lamellipodium
+491: regulation of membrane potential
+492: cell cortex
+493: rhythmic process
+494: glutamate receptor activity
+495: cAMP binding
+496: viral capsid
+497: protein dimerization activity
+498: peptide transmembrane transporter activity
+499: purine-nucleoside phosphorylase activity
+500: L-methionine salvage from methylthioadenosine
+501: guanine phosphoribosyltransferase activity
+502: hypoxanthine phosphoribosyltransferase activity
+503: metallocarboxypeptidase activity
+504: lipid droplet
+505: transmembrane receptor protein tyrosine kinase activity
+506: viral budding from plasma membrane
+507: calcium-dependent phospholipase A2 activity
+508: phospholipid metabolic process
+509: heart development
+510: protein phosphatase inhibitor activity
+511: transmembrane signaling receptor activity
+512: negative regulation of DNA-binding transcription factor activity
+513: regulation of glucose metabolic process
+514: cytoplasmic ribonucleoprotein granule
+515: mitotic spindle
+516: spindle
+517: molecular function activator activity
+518: protein serine/threonine/tyrosine kinase activity
+519: response to wounding
+520: lysine-acetylated histone binding
+521: calcium-mediated signaling
+522: insulin-like growth factor receptor signaling pathway
+523: negative regulation of endothelial cell apoptotic process
+524: 'de novo' pyrimidine nucleobase biosynthetic process
+525: transmembrane transporter activity
+526: amino acid transport
+527: catalytic activity
+528: cytoplasmic vesicle membrane
+529: small GTPase binding
+530: visual perception
+531: caveola
+532: cellular response to dexamethasone stimulus
+533: positive regulation of interleukin-17 production
+534: chromosome
+535: heterochromatin formation
+536: transmembrane transporter binding
+537: positive regulation of telomere maintenance via telomerase
+538: protein auto-ADP-ribosylation
+539: protein poly-ADP-ribosylation
+540: protein polyubiquitination
+541: regulation of MAPK cascade
+542: positive regulation of interleukin-2 production
+543: locomotory behavior
+544: actin cytoskeleton
+545: cellular response to oxidative stress
+546: negative regulation of ERK1 and ERK2 cascade
+547: peptidyl-tyrosine autophosphorylation
+548: positive regulation of vasoconstriction
+549: post-embryonic development
+550: regulation of autophagy
+551: thymus development
+552: cell junction
+553: basal plasma membrane
+554: virus receptor activity
+555: lung development
+556: positive regulation of MAP kinase activity
+557: positive regulation of synaptic transmission, glutamatergic
+558: defense response to Gram-negative bacterium
+559: Golgi lumen
+560: negative regulation of fibrinolysis
+561: apical part of cell
+562: secretory granule
+563: angiotensin maturation
+564: beta-lactam antibiotic catabolic process
+565: triose-phosphate isomerase activity
+566: myelination
+567: peptide antigen binding
+568: antigen processing and presentation of endogenous peptide antigen via MHC class I via ER pathway, TAP-independent
+569: antigen processing and presentation of endogenous peptide antigen via MHC class Ib
+570: calcium-dependent protein binding
+571: tau protein binding
+572: cellular response to starvation
+573: monosaccharide binding
+574: positive regulation of protein-containing complex assembly
+575: dendrite cytoplasm
+576: lung alveolus development
+577: long-term synaptic potentiation
+578: synaptic cleft
+579: negative regulation of protein-containing complex assembly
+580: response to testosterone
+581: Hsp90 protein binding
+582: positive regulation of neuron projection development
+583: response to nutrient levels
+584: site of double-strand break
+585: stem cell proliferation
+586: sensory perception of smell
+587: ionotropic glutamate receptor signaling pathway
+588: negative regulation of type II interferon-mediated signaling pathway
+589: negative regulation of cell migration
+590: cellular response to glucose stimulus
+591: regulation of synaptic transmission, glutamatergic
+592: amyloid-beta binding
+593: receptor internalization
+594: cell-cell signaling
+595: response to cadmium ion
+596: melanosome
+597: cellular response to cAMP
+598: decidualization
+599: response to cocaine
+600: nuclear envelope
+601: heat shock protein binding
+602: peptidyl-prolyl cis-trans isomerase activity
+603: regulation of synaptic plasticity
+604: cysteine-type endopeptidase inhibitor activity involved in apoptotic process
+605: ionotropic glutamate receptor complex
+606: methylated histone binding
+607: presynaptic modulation of chemical synaptic transmission
+608: regulation of circadian rhythm
+609: transcription corepressor activity
+610: peptide deformylase activity
+611: double-stranded RNA binding
+612: methylthioadenosine nucleosidase activity
+613: methyltransferase activity
+614: cell surface receptor protein tyrosine kinase signaling pathway
+615: glutaminyl-peptide cyclotransferase activity
+616: alpha-amylase activity
+617: oligosaccharide catabolic process
+618: abscisic acid binding
+619: abscisic acid-activated signaling pathway
+620: transferase activity
+621: 3',5'-cyclic-AMP phosphodiesterase activity
+622: 3',5'-cyclic-GMP phosphodiesterase activity
+623: cAMP-mediated signaling
+624: double-stranded DNA binding
+625: phosphoprotein binding
+626: protein-macromolecule adaptor activity
+627: negative regulation of osteoblast differentiation
+628: digestion
+629: response to nutrient
+630: DNA damage checkpoint signaling
+631: G2/M transition of mitotic cell cycle
+632: signal transduction in response to DNA damage
+633: ciliary basal body
+634: kinetochore
+635: microtubule
+636: microtubule cytoskeleton
+637: mitotic spindle organization
+638: negative regulation of protein catabolic process
+639: euchromatin
+640: cellular response to estrogen stimulus
+641: response to peptide hormone
+642: phospholipase binding
+643: positive regulation of blood vessel endothelial cell migration
+644: positive regulation of protein localization to plasma membrane
+645: positive regulation of release of sequestered calcium ion into cytosol
+646: dUTP diphosphatase activity
+647: ferric iron binding
+648: protein maturation
+649: copper ion binding
+650: cell body
+651: growth hormone receptor signaling pathway via JAK-STAT
+652: platelet-derived growth factor receptor signaling pathway
+653: positive regulation of cell differentiation
+654: positive regulation of nitric oxide biosynthetic process
+655: positive regulation of protein import into nucleus
+656: positive regulation of tyrosine phosphorylation of STAT protein
+657: post-translational protein modification
+658: prostaglandin metabolic process
+659: amino acid binding
+660: positive regulation of telomere capping
+661: positive regulation of GTPase activity
+662: fructose 1,6-bisphosphate metabolic process
+663: GMP salvage
+664: protein kinase A signaling
+665: growth cone
+666: actin filament binding
+667: ephrin receptor binding
+668: Bergmann glial cell differentiation
+669: Fc-gamma receptor signaling pathway involved in phagocytosis
+670: canonical NF-kappaB signal transduction
+671: intrinsic apoptotic signaling pathway in response to DNA damage
+672: negative regulation of cellular senescence
+673: neuromuscular process controlling balance
+674: neuron differentiation
+675: positive regulation of stress fiber assembly
+676: regulation of endocytosis
+677: progesterone receptor signaling pathway
+678: kinase binding
+679: cellular response to cadmium ion
+680: neurogenesis
+681: positive regulation of non-canonical NF-kappaB signal transduction
+682: response to calcium ion
+683: protein dephosphorylation
+684: beta-N-acetylglucosaminidase activity
+685: growth factor activity
+686: negative regulation of proteolysis
+687: positive regulation of reactive oxygen species metabolic process
+688: zymogen activation
+689: platelet alpha granule lumen
+690: serine protease inhibitor complex
+691: amyloid-beta metabolic process
+692: cell maturation
+693: neuron cellular homeostasis
+694: Ras protein signal transduction
+695: animal organ morphogenesis
+696: positive regulation of JNK cascade
+697: positive regulation of protein targeting to membrane
+698: antigen binding
+699: immunoglobulin mediated immune response
+700: antigen processing and presentation
+701: T cell receptor binding
+702: positive regulation of immunoglobulin production
+703: beta-catenin binding
+704: stem cell differentiation
+705: anchoring junction
+706: T cell differentiation
+707: positive regulation of calcium-mediated signaling
+708: isoprenoid biosynthetic process
+709: fatty acid metabolic process
+710: long-chain fatty acid transport
+711: DNA-binding transcription repressor activity, RNA polymerase II-specific
+712: RNA polymerase II transcription regulatory region sequence-specific DNA binding
+713: neuron projection development
+714: molecular condensate scaffold activity
+715: receptor tyrosine kinase binding
+716: cerebellum development
+717: release of cytochrome c from mitochondria
+718: pyruvate metabolic process
+719: skeletal muscle tissue development
+720: dendritic shaft
+721: serine-type endopeptidase inhibitor activity
+722: amyloid fibril formation
+723: positive regulation of interleukin-6 production
+724: positive regulation of peptidyl-threonine phosphorylation
+725: positive regulation of protein export from nucleus
+726: dendrite membrane
+727: cellular response to growth factor stimulus
+728: positive regulation of glucose import
+729: cytoplasmic stress granule
+730: macroautophagy
+731: intracellular calcium ion homeostasis
+732: fibronectin binding
+733: proteoglycan binding
+734: positive regulation of endothelial cell proliferation
+735: protein tyrosine kinase binding
+736: neuron migration
+737: regulation of protein localization
+738: sensory perception of pain
+739: negative regulation of autophagy
+740: laminin binding
+741: mitochondrion organization
+742: viral protein processing
+743: folic acid biosynthetic process
+744: chaperone-mediated protein folding
+745: extrinsic apoptotic signaling pathway in absence of ligand
+746: response to nicotine
+747: cell chemotaxis
+748: chromatin DNA binding
+749: positive regulation of cardiac muscle cell proliferation
+750: calcium ion transport
+751: synaptic membrane
+752: actin binding
+753: ephrin receptor signaling pathway
+754: vascular endothelial growth factor receptor signaling pathway
+755: presynaptic active zone membrane
+756: kainate selective glutamate receptor activity
+757: cerebral cortex development
+758: response to fungicide
+759: kainate selective glutamate receptor complex
+760: endocytic vesicle
+761: dipeptidyl-peptidase activity
+762: cellular response to vascular endothelial growth factor stimulus
+763: phagocytic vesicle
+764: Fc-epsilon receptor signaling pathway
+765: calcium channel regulator activity
+766: ubiquitin-dependent protein catabolic process
+767: antigen processing and presentation of peptide antigen via MHC class I
+768: mRNA (nucleoside-2'-O-)-methyltransferase activity
+769: mRNA 5'-cap (guanine-N7-)-methyltransferase activity
+770: symbiont-mediated suppression of host innate immune response
+771: lipid A biosynthetic process
+772: adenosylhomocysteine nucleosidase activity
+773: nucleoside catabolic process
+774: CTP biosynthetic process
+775: GTP biosynthetic process
+776: UTP biosynthetic process
+777: adenosine deaminase activity
+778: peptidoglycan turnover
+779: beta-mannosidase activity
+780: regulation of nitrogen utilization
+781: host cell mitochondrion
+782: rRNA N-glycosylase activity
+783: translation initiation factor activity
+784: cGMP catabolic process
+785: transcription repressor complex
+786: response to gamma radiation
+787: transcription initiation-coupled chromatin remodeling
+788: activated T cell proliferation
+789: positive regulation of cytokine production
+790: RNA endonuclease activity
+791: replicative senescence
+792: centriole
+793: spindle midzone
+794: liver regeneration
+795: positive regulation of mitochondrial fission
+796: regulation of cytokinesis
+797: DNA damage response, signal transduction by p53 class mediator
+798: calcium ion homeostasis
+799: negative regulation of epithelial cell proliferation
+800: phospholipase activator activity
+801: cellular response to epidermal growth factor stimulus
+802: extrinsic apoptotic signaling pathway
+803: orotidine-5'-phosphate decarboxylase activity
+804: basement membrane
+805: allantoin metabolic process
+806: starch catabolic process
+807: protein homooligomerization
+808: endosome lumen
+809: extrinsic component of cytoplasmic side of plasma membrane
+810: growth hormone receptor binding
+811: heme binding
+812: actin filament polymerization
+813: cell surface receptor signaling pathway via JAK-STAT
+814: negative regulation of cell-cell adhesion
+815: positive regulation of nitric-oxide synthase biosynthetic process
+816: positive regulation of receptor signaling pathway via JAK-STAT
+817: response to amine
+818: type II interferon-mediated signaling pathway
+819: RNA polymerase II CTD heptapeptide repeat kinase activity
+820: sodium ion transmembrane transport
+821: transcription corepressor binding
+822: cGMP binding
+823: clathrin-coated pit
+824: Notch signaling pathway
+825: cognition
+826: detection of temperature stimulus involved in sensory perception of pain
+827: dopamine metabolic process
+828: estrogen metabolic process
+829: exploration behavior
+830: glomerulus development
+831: response to stress
+832: startle response
+833: amine metabolic process
+834: positive regulation of focal adhesion assembly
+835: regulation of cell growth
+836: dipeptidase activity
+837: fructose-bisphosphate aldolase activity
+838: dihydrofolate reductase activity
+839: folic acid binding
+840: thymidylate synthase activity
+841: dTMP biosynthetic process
+842: response to zinc ion
+843: urea cycle
+844: guanosine phosphorylase activity
+845: nucleobase-containing compound metabolic process
+846: AMP salvage
+847: mesoderm formation
+848: mitogen-activated protein kinase binding
+849: protein kinase C binding
+850: BMP signaling pathway
+851: ERK1 and ERK2 cascade
+852: associative learning
+853: establishment of localization in cell
+854: myoblast proliferation
+855: negative regulation of double-strand break repair via homologous recombination
+856: positive regulation of T cell migration
+857: positive regulation of cell migration involved in sprouting angiogenesis
+858: positive regulation of establishment of T cell polarity
+859: response to endoplasmic reticulum stress
+860: spleen development
+861: B cell proliferation
+862: phagocytosis
+863: negative regulation of intrinsic apoptotic signaling pathway
+864: cellular response to amino acid stimulus
+865: positive regulation of epithelial cell proliferation
+866: positive regulation of phosphorylation
+867: regulation of ERK1 and ERK2 cascade
+868: vasodilation
+869: canonical glycolysis
+870: thymidylate kinase activity
+871: dTDP biosynthetic process
+872: leukotriene biosynthetic process
+873: neutrophil chemotaxis
+874: neutrophil mediated immunity
+875: positive regulation of immune response
+876: positive regulation of interleukin-8 production
+877: RNA nuclease activity
+878: chloride ion binding
+879: positive regulation of blood coagulation
+880: labyrinthine layer blood vessel development
+881: negative regulation of plasminogen activation
+882: regulation of cell adhesion mediated by integrin
+883: regulation of smooth muscle cell migration
+884: smooth muscle cell migration
+885: response to immobilization stress
+886: angiotensin-activated signaling pathway
+887: glyceraldehyde-3-phosphate biosynthetic process
+888: mitochondrial intermembrane space
+889: G protein activity
+890: Schwann cell development
+891: cellular response to gamma radiation
+892: defense response to protozoan
+893: type I pneumocyte differentiation
+894: multivesicular body
+895: positive regulation of phagocytosis
+896: ER to Golgi transport vesicle membrane
+897: beta-2-microglobulin binding
+898: detection of bacterium
+899: protection from natural killer cell mediated cytotoxicity
+900: negative regulation of monocyte chemotactic protein-1 production
+901: retinol binding
+902: long-chain fatty acid binding
+903: autophagosome
+904: ferrous iron binding
+905: regulation of defense response to virus
+906: AMP binding
+907: transcription coregulator binding
+908: mammary gland alveolus development
+909: negative regulation of canonical NF-kappaB signal transduction
+910: protein localization to chromatin
+911: leukocyte migration
+912: negative regulation of mature B cell apoptotic process
+913: trans-Golgi network
+914: neuromuscular process
+915: response to thyroid hormone
+916: core promoter sequence-specific DNA binding
+917: cellular response to steroid hormone stimulus
+918: central nervous system development
+919: axon guidance
+920: histone deacetylase binding
+921: protein phosphatase 2A binding
+922: cellular response to UV
+923: cellular response to glucose starvation
+924: cellular response to ionizing radiation
+925: hematopoietic stem cell differentiation
+926: intrinsic apoptotic signaling pathway in response to endoplasmic reticulum stress
+927: negative regulation of cell growth
+928: negative regulation of reactive oxygen species metabolic process
+929: negative regulation of stem cell proliferation
+930: response to hydrogen peroxide
+931: glycosome
+932: response to progesterone
+933: forebrain development
+934: modulation of excitatory postsynaptic potential
+935: negative regulation of extrinsic apoptotic signaling pathway via death domain receptors
+936: sperm midpiece
+937: cellular response to glucagon stimulus
+938: positive regulation of gluconeogenesis
+939: potassium ion transmembrane transport
+940: glycoside catabolic process
+941: nuclear steroid receptor activity
+942: P-body
+943: RNA 7-methylguanosine cap binding
+944: G1/S transition of mitotic cell cycle
+945: fructose 6-phosphate metabolic process
+946: protein homotrimerization
+947: autophagosome assembly
+948: ganglioside catabolic process
+949: single fertilization
+950: endolysosome lumen
+951: cellular response to thyroid hormone stimulus
+952: positive regulation of interferon-beta production
+953: positive regulation of protein catabolic process
+954: response to amyloid-beta
+955: xenobiotic metabolic process
+956: positive regulation of neurogenesis
+957: animal organ regeneration
+958: negative regulation of tumor necrosis factor-mediated signaling pathway
+959: membrane protein ectodomain proteolysis
+960: NAD+- protein-aspartate ADP-ribosyltransferase activity
+961: NAD+-protein-glutamate ADP-ribosyltransferase activity
+962: DNA ADP-ribosylation
+963: negative regulation of innate immune response
+964: positive regulation of intracellular estrogen receptor signaling pathway
+965: negative regulation of inflammatory response to antigenic stimulus
+966: peptide hormone processing
+967: epoxide hydrolase activity
+968: protein folding chaperone
+969: chaperone cofactor-dependent protein refolding
+970: aminoacyl-tRNA editing activity
+971: DNA-templated DNA replication
+972: DNA-binding transcription repressor activity
+973: single-stranded RNA binding
+974: androgen receptor signaling pathway
+975: cell outer membrane
+976: negative regulation of B cell apoptotic process
+977: negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator
+978: ovarian follicle development
+979: regulation of calcium ion transport
+980: phosphatidylinositol-4,5-bisphosphate binding
+981: negative regulation of chondrocyte differentiation
+982: host cell cytosol
+983: ERAD pathway
+984: endoplasmic reticulum unfolded protein response
+985: lactation
+986: cellular response to type II interferon
+987: epithelial to mesenchymal transition
+988: cellular response to lipid
+989: positive regulation of glucose metabolic process
+990: positive regulation of interleukin-4 production
+991: metallodipeptidase activity
+992: blood vessel remodeling
+993: regulation of heart rate by cardiac conduction
+994: actin filament
+995: negative regulation of hippo signaling
+996: protein destabilization
+997: stimulatory C-type lectin receptor signaling pathway
+998: apoptotic signaling pathway
+999: canonical Wnt signaling pathway
