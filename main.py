@@ -11,7 +11,6 @@ from configs import get_cfg_defaults
 from dataloader import DTIDataset, MultiDataLoader
 from torch.utils.data import DataLoader
 from trainer import Trainer
-from domain_adaptator import Discriminator
 import torch
 import argparse
 import warnings, os
