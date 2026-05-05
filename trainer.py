@@ -6,7 +6,6 @@ import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, roc_auc_score, average_precision_score, roc_curve, confusion_matrix, precision_recall_curve, precision_score
 from models import binary_cross_entropy, cross_entropy_logits, entropy_logits, RandomLayer, RMSELoss
 from prettytable import PrettyTable
-from domain_adaptator import ReverseLayerF
 from tqdm import tqdm
 import torch.nn.functional as F
 import scipy.stats
