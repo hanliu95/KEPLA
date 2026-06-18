@@ -7,13 +7,6 @@ import numpy as np
 
 
 def RMSELoss(pred_output, labels):
-    """
-    保留函数名 RMSELoss，避免 Trainer 中的调用需要修改。
-    但实际训练 loss 改为 MSELoss。
-
-    评估阶段仍然可以在 trainer/test 中计算 RMSE:
-        RMSE = sqrt(mean_squared_error(y_true, y_pred))
-    """
     pred = torch.squeeze(pred_output, 1)
     loss = F.mse_loss(pred, labels)
     return pred, loss
@@ -122,10 +115,6 @@ class KEPLA(nn.Module):
 
         # =========================
         # Drug attention
-        #
-        # 使用 protein global 表示作为 query，
-        # 对 drug node-level 表示做 attention。
-        #
         # attn_d: [B, 1, N_d]
         # v_d: [B, 128]
         # =========================
@@ -140,10 +129,6 @@ class KEPLA(nn.Module):
 
         # =========================
         # Protein attention
-        #
-        # 使用 drug global 表示作为 query，
-        # 对 protein token-level 表示做 attention。
-        #
         # attn_p: [B, 1, L_p]
         # v_p: [B, 128]
         # =========================
@@ -158,17 +143,6 @@ class KEPLA(nn.Module):
 
         # =========================
         # Direct global concatenation
-        #
-        # 原来:
-        #   f = torch.cat((v_d, v_p), dim=1)
-        #   f: [B, 256]
-        #
-        # 现在:
-        #   f = torch.cat((v_d, v_p, v_d_global, v_p_global), dim=1)
-        #   f: [B, 512]
-        #
-        # 因此配置文件中需要:
-        #   DECODER.IN_DIM: 512
         # =========================
         f = torch.cat(
             (v_d, v_p, v_d_global, v_p_global),
@@ -179,8 +153,6 @@ class KEPLA(nn.Module):
 
         # =========================
         # KG branch
-        #
-        # KG 仍然使用原始 global 表示。
         # =========================
         kg_score = self.kg(v_d_global, v_p_global, smiles, ids)
 
