@@ -2,7 +2,7 @@ from transformers import AutoTokenizer, EsmModel
 import torch
 import numpy as np
 import pandas as pd
-from tqdm import tqdm  # ✅ 新增
+from tqdm import tqdm 
 
 train_path = './datasets/pdbbind/random/train.csv'
 df_train = pd.read_csv(train_path)
@@ -20,7 +20,6 @@ Protein_set = set(Protein_list)
 protein_esm_dict = dict()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-# ✅ 加进度条
 for sequence in tqdm(Protein_set, desc="Encoding proteins"):
     with torch.no_grad():
         inputs = tokenizer(sequence, return_tensors="pt")
