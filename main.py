@@ -55,15 +55,6 @@ def build_dataloader(dataset, cfg, shuffle=False, drop_last=False):
 
 
 def load_datasets(data_folder):
-    """
-    固定读取普通划分文件：
-
-        train.csv
-        val.csv
-        test.csv
-
-    不再考虑 task / domain adaptation 分支。
-    """
 
     train_path = os.path.join(data_folder, "train.csv")
     val_path = os.path.join(data_folder, "val.csv")
