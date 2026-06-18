@@ -1,69 +1,134 @@
 comet_support = True
 try:
     from comet_ml import Experiment
-except ImportError as e:
+except ImportError:
     print("Comet ML is not installed, ignore the comet experiment monitor")
     comet_support = False
+
 from models import KEPLA
 from time import time
 from utils import set_seed, graph_collate_func, mkdir
 from configs import get_cfg_defaults
-from dataloader import DTIDataset, MultiDataLoader
+from dataloader import DTIDataset
 from torch.utils.data import DataLoader
 from trainer import Trainer
+
 import torch
 import argparse
-import warnings, os
+import warnings
+import os
 import pandas as pd
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 
 parser = argparse.ArgumentParser(description="KEPLA for PLA prediction")
-parser.add_argument('--cfg', required=True, help="path to config file", type=str)
-parser.add_argument('--data', required=True, type=str, metavar='TASK',
-                    help='dataset')
-parser.add_argument('--split', default='random', type=str, metavar='S', help="split task", choices=['random', 'cold', 'cluster'])
+parser.add_argument("--cfg", required=True, help="path to config file", type=str)
+parser.add_argument("--data", required=True, type=str, metavar="DATA", help="dataset")
+parser.add_argument(
+    "--split",
+    default="random",
+    type=str,
+    metavar="S",
+    help="split type",
+    # choices=["random", "cold", "cluster"],
+)
+
 args = parser.parse_args()
+
+
+def build_dataloader(dataset, cfg, shuffle=False, drop_last=False):
+    kwargs = {
+        "batch_size": cfg.SOLVER.BATCH_SIZE,
+        "shuffle": shuffle,
+        "num_workers": cfg.SOLVER.NUM_WORKERS,
+        "drop_last": drop_last,
+        "collate_fn": graph_collate_func,
+        "pin_memory": device.type == "cuda",
+    }
+
+    if cfg.SOLVER.NUM_WORKERS > 0:
+        kwargs["persistent_workers"] = True
+
+    return DataLoader(dataset, **kwargs)
+
+
+def load_datasets(data_folder):
+    """
+    固定读取普通划分文件：
+
+        train.csv
+        val.csv
+        test.csv
+
+    不再考虑 task / domain adaptation 分支。
+    """
+
+    train_path = os.path.join(data_folder, "train.csv")
+    val_path = os.path.join(data_folder, "val.csv")
+    test_path = os.path.join(data_folder, "test.csv")
+
+    if not os.path.exists(train_path):
+        raise FileNotFoundError(f"Cannot find train file: {train_path}")
+    if not os.path.exists(val_path):
+        raise FileNotFoundError(f"Cannot find validation file: {val_path}")
+    if not os.path.exists(test_path):
+        raise FileNotFoundError(f"Cannot find test file: {test_path}")
+
+    df_train = pd.read_csv(train_path)
+    df_val = pd.read_csv(val_path)
+    df_test = pd.read_csv(test_path)
+
+    train_dataset = DTIDataset(df_train.index.values, df_train)
+    val_dataset = DTIDataset(df_val.index.values, df_val)
+    test_dataset = DTIDataset(df_test.index.values, df_test)
+
+    return train_dataset, val_dataset, test_dataset
 
 
 def main():
     torch.cuda.empty_cache()
     warnings.filterwarnings("ignore", message="invalid value encountered in divide")
+
     cfg = get_cfg_defaults()
     cfg.merge_from_file(args.cfg)
+
     set_seed(cfg.SOLVER.SEED)
+
     suffix = str(int(time() * 1000))[6:]
     mkdir(cfg.RESULT.OUTPUT_DIR)
+
     experiment = None
+
     print(f"Config yaml: {args.cfg}")
     print(f"Hyperparameters: {dict(cfg)}")
     print(f"Running on: {device}", end="\n\n")
 
-    dataFolder = f'../datasets/{args.data}'
-    dataFolder = os.path.join(dataFolder, str(args.split))
+    data_folder = os.path.join("./datasets", args.data, args.split)
 
-    if not cfg.DA.TASK:
-        train_path = os.path.join(dataFolder, 'train.csv')
-        val_path = os.path.join(dataFolder, "val.csv")
-        test_path = os.path.join(dataFolder, "test.csv")
-        df_train = pd.read_csv(train_path)
-        df_val = pd.read_csv(val_path)
-        df_test = pd.read_csv(test_path)
+    train_dataset, val_dataset, test_dataset = load_datasets(data_folder)
 
-        train_dataset = DTIDataset(df_train.index.values, df_train)
-        val_dataset = DTIDataset(df_val.index.values, df_val)
-        test_dataset = DTIDataset(df_test.index.values, df_test)
-    else:
-        train_source_path = os.path.join(dataFolder, 'source_train.csv')
-        train_target_path = os.path.join(dataFolder, 'target_train.csv')
-        test_target_path = os.path.join(dataFolder, 'target_test.csv')
-        df_train_source = pd.read_csv(train_source_path)
-        df_train_target = pd.read_csv(train_target_path)
-        df_test_target = pd.read_csv(test_target_path)
+    train_generator = build_dataloader(
+        train_dataset,
+        cfg,
+        shuffle=True,
+        drop_last=False,
+    )
 
-        train_dataset = DTIDataset(df_train_source.index.values, df_train_source)
-        train_target_dataset = DTIDataset(df_train_target.index.values, df_train_target)
-        test_target_dataset = DTIDataset(df_test_target.index.values, df_test_target)
+    val_generator = build_dataloader(
+        val_dataset,
+        cfg,
+        shuffle=False,
+        drop_last=False,
+    )
+
+    test_generator = build_dataloader(
+        test_dataset,
+        cfg,
+        shuffle=False,
+        drop_last=False,
+    )
 
     if cfg.COMET.USE and comet_support:
         experiment = Experiment(
@@ -75,74 +140,48 @@ def main():
             log_git_metadata=False,
             log_git_patch=False,
             auto_param_logging=False,
-            auto_metric_logging=False
+            auto_metric_logging=False,
         )
+
         hyper_params = {
             "LR": cfg.SOLVER.LR,
+            "Batch_size": cfg.SOLVER.BATCH_SIZE,
+            "Seed": cfg.SOLVER.SEED,
             "Output_dir": cfg.RESULT.OUTPUT_DIR,
-            "DA_use": cfg.DA.USE,
-            "DA_task": cfg.DA.TASK,
+            "Data": args.data,
+            "Split": args.split,
         }
-        if cfg.DA.USE:
-            da_hyper_params = {
-                "DA_init_epoch": cfg.DA.INIT_EPOCH,
-                "Use_DA_entropy": cfg.DA.USE_ENTROPY,
-                "Random_layer": cfg.DA.RANDOM_LAYER,
-                "Original_random": cfg.DA.ORIGINAL_RANDOM,
-                "DA_optim_lr": cfg.SOLVER.DA_LR
-            }
-            hyper_params.update(da_hyper_params)
+
         experiment.log_parameters(hyper_params)
+
         if cfg.COMET.TAG is not None:
             experiment.add_tag(cfg.COMET.TAG)
-        experiment.set_name(f"{args.data}_{suffix}")
 
-    params = {'batch_size': cfg.SOLVER.BATCH_SIZE, 'shuffle': True, 'num_workers': cfg.SOLVER.NUM_WORKERS,
-              'drop_last': True, 'collate_fn': graph_collate_func}
-
-    if not cfg.DA.USE:
-        training_generator = DataLoader(train_dataset, **params)
-        params['shuffle'] = False
-        params['drop_last'] = False
-        if not cfg.DA.TASK:
-            val_generator = DataLoader(val_dataset, **params)
-            test_generator = DataLoader(test_dataset, **params)
-        else:
-            val_generator = DataLoader(test_target_dataset, **params)
-            test_generator = DataLoader(test_target_dataset, **params)
-    else:
-        source_generator = DataLoader(train_dataset, **params)
-        target_generator = DataLoader(train_target_dataset, **params)
-        n_batches = max(len(source_generator), len(target_generator))
-        multi_generator = MultiDataLoader(dataloaders=[source_generator, target_generator], n_batches=n_batches)
-        params['shuffle'] = False
-        params['drop_last'] = False
-        val_generator = DataLoader(test_target_dataset, **params)
-        test_generator = DataLoader(test_target_dataset, **params)
+        experiment.set_name(f"{args.data}_{args.split}_{suffix}")
 
     model = KEPLA(**cfg).to(device)
 
-    if cfg.DA.USE:
-        if cfg["DA"]["RANDOM_LAYER"]:
-            domain_dmm = Discriminator(input_size=cfg["DA"]["RANDOM_DIM"], n_class=cfg["DECODER"]["BINARY"]).to(device)
-        else:
-            domain_dmm = Discriminator(input_size=cfg["DECODER"]["IN_DIM"] * cfg["DECODER"]["BINARY"],
-                                       n_class=cfg["DECODER"]["BINARY"]).to(device)
-        opt = torch.optim.Adam(model.parameters(), lr=cfg.SOLVER.LR)
-        opt_da = torch.optim.Adam(domain_dmm.parameters(), lr=cfg.SOLVER.DA_LR)
-    else:
-        opt = torch.optim.Adam(model.parameters(), lr=cfg.SOLVER.LR)
-        
+    opt = torch.optim.AdamW(
+        model.parameters(),
+        lr=cfg.SOLVER.LR,
+        weight_decay=getattr(cfg.SOLVER, "WEIGHT_DECAY", 1e-4),
+    )
+
     torch.backends.cudnn.benchmark = True
 
-    if not cfg.DA.USE:
-        trainer = Trainer(model, opt, device, training_generator, val_generator, test_generator, opt_da=None,
-                          discriminator=None,
-                          experiment=experiment, **cfg)
-    else:
-        trainer = Trainer(model, opt, device, multi_generator, val_generator, test_generator, opt_da=opt_da,
-                          discriminator=domain_dmm,
-                          experiment=experiment, **cfg)
+    trainer = Trainer(
+        model,
+        opt,
+        device,
+        train_generator,
+        val_generator,
+        test_generator,
+        opt_da=None,
+        discriminator=None,
+        experiment=experiment,
+        **cfg,
+    )
+
     result = trainer.train()
 
     with open(os.path.join(cfg.RESULT.OUTPUT_DIR, "model_architecture.txt"), "w") as wf:
@@ -154,7 +193,7 @@ def main():
     return result
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = time()
     result = main()
     e = time()

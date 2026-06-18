@@ -16,7 +16,7 @@ class DTIDataset(data.Dataset):
         self.atom_featurizer = CanonicalAtomFeaturizer()
         self.bond_featurizer = CanonicalBondFeaturizer(self_loop=True)
         self.fc = partial(smiles_to_bigraph, add_self_loop=True)
-        self.protein_esm_dict = np.load('../datasets/pdbbind/protein_esm3b_mer9_dict.npy', allow_pickle=True).item()
+        self.protein_esm_dict = np.load('./datasets/pdbbind/protein_esm650m_mer9_dict.npy', allow_pickle=True).item()
 
     def __len__(self):
         return len(self.list_IDs)

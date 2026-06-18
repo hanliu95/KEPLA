@@ -6,6 +6,7 @@ import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, roc_auc_score, average_precision_score, roc_curve, confusion_matrix, precision_recall_curve, precision_score
 from models import binary_cross_entropy, cross_entropy_logits, entropy_logits, RandomLayer, RMSELoss
 from prettytable import PrettyTable
+# from domain_adaptator import ReverseLayerF
 from tqdm import tqdm
 import torch.nn.functional as F
 import scipy.stats
@@ -309,33 +310,97 @@ class Trainer(object):
                   str(epoch_lamb_da))
         return total_loss_epoch, model_loss_epoch, da_loss_epoch, epoch_lamb_da
 
+    # def test(self, dataloader="test"):
+    #     test_loss = 0
+    #     y_label, y_pred = [], []
+    #     if dataloader == "test":
+    #         data_loader = self.test_dataloader
+    #     elif dataloader == "val":
+    #         data_loader = self.val_dataloader
+    #     else:
+    #         raise ValueError(f"Error key value {dataloader}")
+    #     num_batches = len(data_loader)
+    #     with torch.no_grad():
+    #         self.model.eval()
+    #         for i, (v_d, v_p, labels, smiles, ids) in enumerate(data_loader):
+
+
+    #             v_d, v_p, labels = v_d.to(self.device), v_p.to(self.device), labels.float().to(self.device)
+    #             if dataloader == "val":
+    #                 v_d, v_p, f, score, kg_score = self.model(v_d, v_p, smiles, ids)
+    #             elif dataloader == "test":
+    #                 v_d, v_p, f, score, kg_score = self.best_model(v_d, v_p, smiles, ids)
+    #             if self.n_class == 1:
+    #                 n, loss = RMSELoss(score, labels)
+    #             else:
+    #                 n, loss = cross_entropy_logits(score, labels)
+    #             test_loss += loss.item()
+    #             y_label = y_label + labels.to("cpu").tolist()
+    #             y_pred = y_pred + n.to("cpu").tolist()
+    #     rmse = np.sqrt(mean_squared_error(y_label, y_pred))
+    #     mae = mean_absolute_error(y_label, y_pred)
+    #     test_loss = test_loss / num_batches
+    #     r_p = scipy.stats.pearsonr(y_label, y_pred)[0]
+    #     slope, intercept, _, _, _ = scipy.stats.linregress(y_pred, y_label)
+    #     sd_error = np.array(y_label) - (intercept + slope * np.array(y_pred))
+    #     sd = np.sqrt(np.sum(np.power(sd_error, 2)) / (len(y_label) - 1))
+
+    #     return rmse, mae, r_p, sd, test_loss
+
     def test(self, dataloader="test"):
         test_loss = 0
         y_label, y_pred = [], []
+    
         if dataloader == "test":
             data_loader = self.test_dataloader
         elif dataloader == "val":
             data_loader = self.val_dataloader
         else:
             raise ValueError(f"Error key value {dataloader}")
+    
         num_batches = len(data_loader)
+    
+        # only used for reporting test inference time
+        infer_time = 0.0
+        num_pairs = 0
+    
         with torch.no_grad():
             self.model.eval()
+            if dataloader == "test":
+                self.best_model.eval()
+    
             for i, (v_d, v_p, labels, smiles, ids) in enumerate(data_loader):
-
-
-                v_d, v_p, labels = v_d.to(self.device), v_p.to(self.device), labels.float().to(self.device)
+                v_d = v_d.to(self.device)
+                v_p = v_p.to(self.device)
+                labels = labels.float().to(self.device)
+    
                 if dataloader == "val":
                     v_d, v_p, f, score, kg_score = self.model(v_d, v_p, smiles, ids)
+    
                 elif dataloader == "test":
+                    # synchronize for accurate GPU timing
+                    if torch.cuda.is_available():
+                        torch.cuda.synchronize()
+    
+                    start = time()
                     v_d, v_p, f, score, kg_score = self.best_model(v_d, v_p, smiles, ids)
+    
+                    if torch.cuda.is_available():
+                        torch.cuda.synchronize()
+    
+                    end = time()
+                    infer_time += (end - start)
+                    num_pairs += labels.size(0)
+    
                 if self.n_class == 1:
                     n, loss = RMSELoss(score, labels)
                 else:
                     n, loss = cross_entropy_logits(score, labels)
+    
                 test_loss += loss.item()
                 y_label = y_label + labels.to("cpu").tolist()
                 y_pred = y_pred + n.to("cpu").tolist()
+    
         rmse = np.sqrt(mean_squared_error(y_label, y_pred))
         mae = mean_absolute_error(y_label, y_pred)
         test_loss = test_loss / num_batches
@@ -343,5 +408,11 @@ class Trainer(object):
         slope, intercept, _, _, _ = scipy.stats.linregress(y_pred, y_label)
         sd_error = np.array(y_label) - (intercept + slope * np.array(y_pred))
         sd = np.sqrt(np.sum(np.power(sd_error, 2)) / (len(y_label) - 1))
-
+    
+        if dataloader == "test":
+            time_per_pair = infer_time / num_pairs
+            print(f"Test inference time: {infer_time:.4f} s")
+            print(f"Number of test pairs: {num_pairs}")
+            print(f"Time / pair: {time_per_pair * 1000:.4f} ms")
+    
         return rmse, mae, r_p, sd, test_loss
