@@ -101,7 +101,7 @@ class KEPLA(nn.Module):
 
         # =========================
         # Protein projection
-        # v_p: [B, L_p, 480] -> [B, L_p, 128]
+        # v_p: [B, L_p, 1280] -> [B, L_p, 128]
         # =========================
         v_p = self.fc(v_p.float())
 
